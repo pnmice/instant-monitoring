@@ -52,7 +52,7 @@ Since i don't like to write the user password e-v-e-r-y time a playbook is execu
 * And i give sudo with no password to that user. Less risky options available but not in this repository :)
 
 ```
-ansible-playbook plays/set-keys.yml --ask-pass -e "username=daniel"
+ansible-playbook plays/set-keys.yml --ask-pass -e "username=vagrant"
 ```
 This step will ask for a SSH password. All the Vagrant boxes uses the user vagrant and the password: **vagrant**
 
@@ -65,9 +65,13 @@ Things installed:
 * ...And all the friends that Nagios need to run happy (Apache, php, etc...)
 
 Also, it sets the user and password required to open the Dashboard url. In this case, user/password are: nagiosadmin/nagiosadmin
-
+```
+ansible-playbook main.yml --private-key=.vagrant/machines/dos/virtualbox/private_key --private-key=.vagrant/machines/uno/virtualbox/private_key --private-key=.vagrant/machines/nagioscentral/virtualbox/private_key  
+```
 ```
 ansible-playbook plays/install-nagios-server.yml
+
+
 ```
 
 ### Set the Percona repository on the nodes (And install MySQL)
